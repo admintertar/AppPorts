@@ -210,7 +210,8 @@ struct ContentView: View {
     @State private var alertMessage = ""
     
     @State private var showUpdateAlert = false
-    @State private var updateURL: URL?
+    @State private var updateGitHubURL: URL?
+    @State private var updateChinaDownloadURL: URL?
     @State private var updateReleaseBody = ""
     
     // App Store 应用迁移确认
@@ -571,23 +572,22 @@ struct ContentView: View {
             
             // Check for updates
             Task {
-                do {
-                    if let release = try await UpdateChecker.shared.checkForUpdates() {
-                        AppLogger.shared.logContext(
-                            "检测到新版本",
-                            details: [
-                                ("tag", release.tagName),
-                                ("url", release.htmlUrl)
-                            ]
-                        )
-                        await MainActor.run {
-                            self.updateReleaseBody = release.body
-                            self.updateURL = URL(string: release.htmlUrl)
-                            self.showUpdateAlert = true
-                        }
+                if let update = await UpdateChecker.shared.checkForUpdates() {
+                    AppLogger.shared.logContext(
+                        "检测到新版本",
+                        details: [
+                            ("version", update.version),
+                            ("source", update.source.rawValue),
+                            ("github_url", update.githubURL?.absoluteString),
+                            ("china_download_url", update.chinaDownloadURL.absoluteString)
+                        ]
+                    )
+                    await MainActor.run {
+                        self.updateReleaseBody = update.releaseNotesMarkdown
+                        self.updateGitHubURL = update.githubURL
+                        self.updateChinaDownloadURL = update.chinaDownloadURL
+                        self.showUpdateAlert = true
                     }
-                } catch {
-                    AppLogger.shared.logError("检查更新失败", error: error)
                 }
             }
         }
@@ -633,15 +633,20 @@ struct ContentView: View {
                 Divider()
                 HStack {
                     Spacer()
+                    Button("GitHub".localized) {
+                        showUpdateAlert = false
+                        if let url = updateGitHubURL { NSWorkspace.shared.open(url) }
+                    }
+                    .disabled(updateGitHubURL == nil)
+                    .keyboardShortcut(.defaultAction)
+                    Button("国内下载".localized) {
+                        showUpdateAlert = false
+                        if let url = updateChinaDownloadURL { NSWorkspace.shared.open(url) }
+                    }
                     Button("以后再说".localized) {
                         showUpdateAlert = false
                     }
                     .keyboardShortcut(.cancelAction)
-                    Button("前往下载".localized) {
-                        showUpdateAlert = false
-                        if let url = updateURL { NSWorkspace.shared.open(url) }
-                    }
-                    .keyboardShortcut(.defaultAction)
                 }
             }
             .padding(20)
