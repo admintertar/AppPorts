@@ -1324,8 +1324,14 @@ actor DataDirScanner {
 
             let components = bundleID.split(separator: ".").map(String.init)
             if components.count >= 2 {
+                // 通用 TLD/后缀词汇，作为 containsMatch 会造成大范围误匹配
+                let genericSuffixes: Set<String> = ["app", "com", "org", "net", "io", "dev", "cn", "us", "uk", "de", "fr", "jp", "kr"]
                 for index in 1..<components.count {
                     let suffix = components[index...].joined(separator: ".")
+                    // 跳过纯通用 TLD 后缀（如 "app"、"com"）和由通用词汇组成的多段后缀
+                    if components[index...].allSatisfy({ genericSuffixes.contains($0.lowercased()) }) {
+                        continue
+                    }
                     if suffix.count >= 3 {
                         containsMatches.append(suffix)
                     }

@@ -31,6 +31,22 @@ import Foundation
 ///
 /// - Note: 使用 Actor 确保所有扫描操作在后台线程串行执行，不阻塞 UI
 actor AppScanner {
+    private var infoPlistCache: [URL: [String: Any]] = [:]
+
+    private func readInfoPlist(for appURL: URL) -> [String: Any]? {
+        if let cached = infoPlistCache[appURL] {
+            return cached.isEmpty ? nil : cached
+        }
+        let infoPlistURL = appURL.appendingPathComponent("Contents/Info.plist")
+        guard let plistData = try? Data(contentsOf: infoPlistURL),
+              let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any] else {
+            infoPlistCache[appURL] = [:]
+            return nil
+        }
+        infoPlistCache[appURL] = plist
+        return plist
+    }
+
     private struct ScanCandidate {
         let app: AppItem
         let dedupeKey: String
@@ -105,9 +121,21 @@ actor AppScanner {
             options: [.skipsHiddenFiles], // 跳过隐藏文件提升性能
             errorHandler: nil
         ) else { return 0 }
-        
+
+        var fileCount = 0
+        let maxFileCount = 500_000
+
         // 累加所有文件大小
         for case let fileURL as URL in enumerator {
+            fileCount += 1
+            if fileCount > maxFileCount {
+                AppLogger.shared.logContext(
+                    "calculateDirectorySize: 文件数量达到上限，提前终止",
+                    details: [("path", scanURL.path), ("limit", String(maxFileCount))],
+                    level: "WARN"
+                )
+                break
+            }
             let resourceValues = try? fileURL.resourceValues(forKeys: Set(resourceKeys))
             if resourceValues?.isSymbolicLink == true {
                 if countsSymlinkEntries {
@@ -155,18 +183,20 @@ actor AppScanner {
             ],
             level: "TRACE"
         )
+        infoPlistCache.removeAll()
         let fileManager = FileManager.default
         var candidates: [ScanCandidate] = []
         let externalComparisonIndex = makeExternalComparisonIndex(for: externalAppsDir)
-        
+
         // 性能优化：预先获取需要的资源键
         let keys: [URLResourceKey] = [.isSymbolicLinkKey, .isDirectoryKey]
         let items = (try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: keys, options: .skipsHiddenFiles)) ?? []
-        
+
         for itemURL in items {
             // 只处理 .app 扩展名的项目
             if itemURL.pathExtension == "app" {
                 let appName = itemURL.lastPathComponent
+                AppLogger.shared.log("扫描应用: \(appName)", level: "TRACE")
                 let baseStatus = detectLocalAppStatus(at: itemURL)
                 let status = statusForLocalApp(
                     baseStatus: baseStatus,
@@ -574,30 +604,27 @@ actor AppScanner {
     /// - Note: iOS 应用通常同时也是 App Store 应用
     private func detectAppStoreAndIOSApp(at appURL: URL) -> (isAppStore: Bool, isIOS: Bool) {
         let fileManager = FileManager.default
-        
+
         // 1. 检测 _MASReceipt（Mac App Store 收据目录）
         let receiptURL = appURL.appendingPathComponent("Contents/_MASReceipt")
         let hasMASReceipt = fileManager.fileExists(atPath: receiptURL.path)
-        
+
         // 2. 检测 WrappedBundle（iOS 应用容器）
         let wrappedBundleURL = appURL.appendingPathComponent("WrappedBundle")
         let hasWrappedBundle = fileManager.fileExists(atPath: wrappedBundleURL.path)
-        
+
         var isIOSApp = false
         var isAppStore = hasMASReceipt
-        
+
         // 3. 解析 Info.plist 检测 UIDeviceFamily
-        let infoPlistURL = appURL.appendingPathComponent("Contents/Info.plist")
-        if let plistData = try? Data(contentsOf: infoPlistURL),
-           let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any] {
-            
+        if let plist = readInfoPlist(for: appURL) {
             // 检测 UIDeviceFamily（iOS 设备系列标识）
             // 1 = iPhone, 2 = iPad
             if let deviceFamily = plist["UIDeviceFamily"] as? [Int], !deviceFamily.isEmpty {
                 isIOSApp = true
                 isAppStore = true // iOS 应用必然来自 App Store
             }
-            
+
             // 检测 DTCompiler（Xcode 编译器版本）
             // 某些 iOS 应用可能没有 UIDeviceFamily，但有 DTCompiler
             if let dtCompiler = plist["DTCompiler"] as? String,
@@ -610,13 +637,13 @@ actor AppScanner {
                 }
             }
         }
-        
+
         // 4. 如果有 WrappedBundle，肯定是 iOS 应用
         if hasWrappedBundle {
             isIOSApp = true
             isAppStore = true
         }
-        
+
         return (isAppStore, isIOSApp)
     }
 
@@ -624,6 +651,7 @@ actor AppScanner {
     private func detectElectronAndSparkle(at appURL: URL) -> (isElectron: Bool, isSparkle: Bool) {
         let fm = FileManager.default
         let frameworks = appURL.appendingPathComponent("Contents/Frameworks")
+        let plist = readInfoPlist(for: appURL)
 
         // Electron 检测
         var isElectron = false
@@ -633,7 +661,7 @@ actor AppScanner {
         if !isElectron, let items = try? fm.contentsOfDirectory(at: frameworks, includingPropertiesForKeys: nil, options: .skipsHiddenFiles) {
             isElectron = items.contains { $0.lastPathComponent.contains("Electron Helper") }
         }
-        if !isElectron, let plist = NSDictionary(contentsOf: appURL.appendingPathComponent("Contents/Info.plist")) {
+        if !isElectron, let plist {
             isElectron = plist["ElectronDefaultApp"] != nil || plist["electron"] != nil
         }
 
@@ -661,7 +689,7 @@ actor AppScanner {
                 }
             }
         }
-        if !isSparkle, let plist = NSDictionary(contentsOf: appURL.appendingPathComponent("Contents/Info.plist")) {
+        if !isSparkle, let plist {
             let sparkleKeys = ["SUFeedURL", "SUPublicDSAKeyFile", "SUPublicEDKey", "SUScheduledCheckInterval", "SUAllowsAutomaticUpdates"]
             isSparkle = sparkleKeys.contains { plist[$0] != nil }
         }
@@ -707,7 +735,7 @@ actor AppScanner {
         }
 
         // 4. Keystone plist 键（Google Chrome）
-        if let plist = NSDictionary(contentsOf: contents.appendingPathComponent("Info.plist")),
+        if let plist = readInfoPlist(for: appURL),
            plist["KSProductID"] != nil {
             return true
         }
@@ -847,11 +875,12 @@ actor AppScanner {
             ],
             level: "TRACE"
         )
+        infoPlistCache.removeAll()
         let fileManager = FileManager.default
         var candidates: [ScanCandidate] = []
         let keys: [URLResourceKey] = [.isSymbolicLinkKey, .isDirectoryKey]
         let items = (try? fileManager.contentsOfDirectory(at: dir, includingPropertiesForKeys: keys, options: .skipsHiddenFiles)) ?? []
-        
+
         for itemURL in items {
             if itemURL.pathExtension == "app" {
                 let appName = itemURL.lastPathComponent
@@ -1159,19 +1188,11 @@ actor AppScanner {
     }
 
     private func readBundleIdentifier(from appURL: URL) -> String? {
-        let infoPlistURL = appURL.appendingPathComponent("Contents/Info.plist")
-        guard let plistData = try? Data(contentsOf: infoPlistURL),
-              let plist = try? PropertyListSerialization.propertyList(from: plistData, options: [], format: nil) as? [String: Any] else {
-            return nil
-        }
-
-        return plist["CFBundleIdentifier"] as? String
+        readInfoPlist(for: appURL)?["CFBundleIdentifier"] as? String
     }
 
     private func readBundleVersion(from appURL: URL) -> String? {
-        let infoPlistURL = appURL.appendingPathComponent("Contents/Info.plist")
-        guard let plist = NSDictionary(contentsOf: infoPlistURL) as? [String: Any] else { return nil }
-        return plist["CFBundleShortVersionString"] as? String
+        readInfoPlist(for: appURL)?["CFBundleShortVersionString"] as? String
     }
 
     private static var backupDirectoryURL: URL {
@@ -1247,11 +1268,50 @@ actor AppScanner {
         let pipe = Pipe()
         process.standardError = pipe
         process.standardOutput = FileHandle.nullDevice
-        try? process.run()
-        process.waitUntilExit()
+
+        do {
+            try process.run()
+        } catch {
+            AppLogger.shared.logError(
+                "isAdHocSigned: 启动 codesign 失败",
+                error: error,
+                errorCode: "CODESIGN-LAUNCH-FAILED",
+                relatedURLs: [("app", appURL)]
+            )
+            return false
+        }
+
+        let timeoutSeconds: TimeInterval = 10
+        let finished = process.waitUntilExit(withTimeout: timeoutSeconds)
+
+        if !finished {
+            process.terminate()
+            AppLogger.shared.logContext(
+                "isAdHocSigned: codesign 超时，已终止",
+                details: [
+                    ("app", appURL.path),
+                    ("timeout_sec", String(Int(timeoutSeconds)))
+                ],
+                level: "WARN"
+            )
+            return false
+        }
+
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let output = String(data: data, encoding: .utf8) ?? ""
-        // ad-hoc 签名的特征：Signature=adhoc
         return output.contains("Signature=adhoc")
+    }
+}
+
+private extension Process {
+    /// 带超时的 waitUntilExit。返回 true 表示正常退出，false 表示超时。
+    func waitUntilExit(withTimeout timeout: TimeInterval) -> Bool {
+        let semaphore = DispatchSemaphore(value: 0)
+        DispatchQueue.global().async { [weak self] in
+            self?.waitUntilExit()
+            semaphore.signal()
+        }
+        let result = semaphore.wait(timeout: .now() + timeout)
+        return result == .success
     }
 }

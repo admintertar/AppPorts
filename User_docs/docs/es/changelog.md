@@ -4,6 +4,27 @@ outline: deep
 
 # Registro de Cambios
 
+## v1.7.1
+
+### Nuevas funciones
+
+- Directorios de escaneo local personalizados: el encabezado «Mac Apps Locales» ahora tiene un botón «+» para agregar directorios de escaneo de aplicaciones adicionales. Útil para herramientas como JetBrains Toolbox y Steam que instalan aplicaciones fuera de `/Applications`. Los directorios agregados se guardan y monitorean automáticamente (#48).
+- Sincronización de versión Stub Portal: cuando una aplicación externa se actualiza a través de App Store, la información de versión del Stub Portal local se sincroniza automáticamente y la caché de macOS Launch Services se actualiza. El menú «Abrir con» ya no muestra números de versión obsoletos (#50).
+
+### Mejoras
+
+- Escaneo de aplicaciones más rápido: lecturas de Info.plist por aplicación reducidas de 7 a 1 (mediante caché en memoria).
+- Protección de tiempo de espera de escaneo: el subproceso `codesign` ahora tiene un tiempo de espera de 10 segundos.
+- Límite de seguridad para cálculo de tamaño: se agregó un límite de 500,000 archivos a los cálculos de tamaño recursivos.
+- Registro de rastreo de escaneo: se agregó registro TRACE por aplicación al bucle de escaneo.
+- Coincidencia más precisa de directorios de datos: las palabras TLD genéricas como `app`, `com`, `org` ahora se filtran.
+
+### Correcciones
+
+- Corregido: Trae y aplicaciones similares se escaneaban extremadamente lento.
+- Corregido: la información de versión del Stub Portal no se actualizaba después de actualizaciones de App Store.
+- Corregido: el botón de actualización no activaba la sincronización de versión.
+
 ## v1.7.0
 
 ### Nuevas funciones

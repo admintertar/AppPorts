@@ -4,6 +4,27 @@ outline: deep
 
 # Changelog
 
+## v1.7.1
+
+### Neue Funktionen
+
+- Benutzerdefinierte lokale Scan-Verzeichnisse: Der „Mac Lokale Apps"-Header hat jetzt einen „+"-Button zum Hinzufügen zusätzlicher lokaler App-Scan-Verzeichnisse. Nützlich für Tools wie JetBrains Toolbox und Steam, die Apps außerhalb von `/Applications` installieren. Hinzugefügte Verzeichnisse werden gespeichert und automatisch überwacht (#48).
+- Stub Portal Versions-Synchronisierung: Wenn eine externe App über den App Store aktualisiert wird, werden die Versionsinformationen des lokalen Stub Portals automatisch synchronisiert und der macOS Launch Services-Cache aktualisiert. Das Menü „Öffnen mit" zeigt keine veralteten Versionsnummern mehr an (#50).
+
+### Verbesserungen
+
+- Schnellere App-Suche: Info.plist-Lesevorgänge pro App von 7 auf 1 reduziert (durch In-Memory-Cache).
+- Scan-Timeout-Schutz: Der `codesign`-Unterprozess hat jetzt einen 10-Sekunden-Timeout.
+- Sicherheitslimit für die Verzeichnisgrößenberechnung: Ein Limit von 500.000 Dateien wurde hinzugefügt.
+- Scan-Protokollierung: Per-App-TRACE-Protokollierung wurde hinzugefügt.
+- Präzisere Datenverzeichnis-Suche: Generische TLD-Wörter wie `app`, `com`, `org` werden jetzt gefiltert.
+
+### Behoben
+
+- Behoben: Trae und ähnliche Apps wurden extrem langsam gescannt.
+- Behoben: Stub Portal-Versionsinformationen wurden nach App Store-Updates nicht aktualisiert.
+- Behoben: Der Aktualisierungsbutton löste keine Versions-Synchronisierung aus.
+
 ## v1.7.0
 
 ### Neue Funktionen

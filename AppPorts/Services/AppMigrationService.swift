@@ -1291,6 +1291,101 @@ struct AppMigrationService {
         AppLogger.shared.log("已创建 macOS Stub Portal: \(localURL.lastPathComponent) -> \(externalURL.path)")
     }
 
+    /// 刷新 Stub Portal 的 Info.plist 和图标（同步外置 app 的版本等元数据）
+    ///
+    /// 当外置 app 更新后，FolderMonitor 触发 rescan 时调用。
+    /// 对比本地 Stub Portal 与外置 app 的版本号，如有变化则更新 plist、图标并刷新 Launch Services。
+    func refreshStubPortal(at localURL: URL, from externalURL: URL) {
+        let fm = fileManager
+        let localContents = localURL.appendingPathComponent("Contents")
+        let externalContents = externalURL.appendingPathComponent("Contents")
+        let localInfoPlist = localContents.appendingPathComponent("Info.plist")
+        let externalInfoPlist = externalContents.appendingPathComponent("Info.plist")
+
+        // 读取外置 app 的 Info.plist
+        guard let extData = try? Data(contentsOf: externalInfoPlist),
+              var extPlist = try? PropertyListSerialization.propertyList(from: extData, format: nil) as? [String: Any] else {
+            return
+        }
+
+        // 读取本地 Stub Portal 的 Info.plist
+        guard let localData = try? Data(contentsOf: localInfoPlist),
+              let localPlist = try? PropertyListSerialization.propertyList(from: localData, format: nil) as? [String: Any] else {
+            return
+        }
+
+        // 对比版本号
+        let localVersion = localPlist["CFBundleShortVersionString"] as? String
+        let externalVersion = extPlist["CFBundleShortVersionString"] as? String
+        let localBuild = localPlist["CFBundleVersion"] as? String
+        let externalBuild = extPlist["CFBundleVersion"] as? String
+
+        guard localVersion != externalVersion || localBuild != externalBuild else { return }
+
+        AppLogger.shared.logContext(
+            "Stub Portal 版本变化，刷新中",
+            details: [
+                ("app", localURL.lastPathComponent),
+                ("old_version", localVersion ?? "nil"),
+                ("new_version", externalVersion ?? "nil"),
+                ("old_build", localBuild ?? "nil"),
+                ("new_build", externalBuild ?? "nil")
+            ]
+        )
+
+        // 用外置 app 的 plist 重新生成 Stub Portal 的 plist（与 createMacOSStubPortal 相同逻辑）
+        extPlist["CFBundleExecutable"] = "launcher"
+        extPlist["LSUIElement"] = true
+        if let bundleID = extPlist["CFBundleIdentifier"] as? String {
+            extPlist["CFBundleIdentifier"] = "\(bundleID).appports.stub"
+        }
+        let updateKeys = ["SUFeedURL", "SUPublicDSAKeyFile", "SUPublicEDKey",
+                          "SUScheduledCheckInterval", "SUAllowsAutomaticUpdates",
+                          "ElectronDefaultApp", "electron"]
+        for key in updateKeys { extPlist.removeValue(forKey: key) }
+
+        if let newData = try? PropertyListSerialization.data(fromPropertyList: extPlist, format: .xml, options: 0) {
+            try? newData.write(to: localInfoPlist)
+        }
+
+        // 刷新图标
+        let localResources = localContents.appendingPathComponent("Resources")
+        let externalResources = externalContents.appendingPathComponent("Resources")
+        if let iconName = extPlist["CFBundleIconFile"] as? String {
+            let iconNameURL = URL(fileURLWithPath: iconName)
+            let iconExt = iconNameURL.pathExtension.isEmpty ? "icns" : iconNameURL.pathExtension
+            let iconBase = iconNameURL.pathExtension.isEmpty ? iconName : iconNameURL.deletingPathExtension().lastPathComponent
+            let iconFileName = "\(iconBase).\(iconExt)"
+            let externalIcon = externalResources.appendingPathComponent(iconFileName)
+            let localIcon = localResources.appendingPathComponent(iconFileName)
+            if fm.fileExists(atPath: externalIcon.path) {
+                try? fm.removeItem(at: localIcon)
+                try? fm.copyItem(at: externalIcon, to: localIcon)
+            }
+        }
+
+        // 重新 ad-hoc 签名
+        resignAppBundle(at: localURL)
+
+        // 刷新 Launch Services
+        refreshLaunchServices(for: localURL)
+
+        AppLogger.shared.log("已刷新 Stub Portal: \(localURL.lastPathComponent) (\(localVersion ?? "?") → \(externalVersion ?? "?"))")
+    }
+
+    private func refreshLaunchServices(for appURL: URL) {
+        let lsregister = "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: lsregister)
+        process.arguments = ["-f", appURL.path]
+        do {
+            try process.run()
+            process.waitUntilExit()
+        } catch {
+            AppLogger.shared.log("lsregister 刷新失败: \(appURL.lastPathComponent)", level: "WARN")
+        }
+    }
+
     /// 复制原生 launcher 二进制，并写入 real_app_path.txt
     private func copyNativeLauncher(to macosDir: URL, resourcesDir: URL, externalURL: URL) throws {
         // 从 AppPorts bundle 中复制预编译的原生 launcher 二进制

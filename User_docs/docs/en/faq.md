@@ -16,6 +16,10 @@ Minimum support is macOS 12.0 (Monterey). macOS 15.1 (Sequoia) and later additio
 
 ## App Migration
 
+### How do I scan apps outside /Applications?
+
+Click the "+" button in the "Mac Local Apps" header to add extra scan directories. Useful for tools like JetBrains Toolbox and Steam that install apps in custom locations. Added directories are saved automatically and monitored for changes.
+
 ### What if the app won't open after migration?
 
 1. Confirm external storage is connected and accessible

@@ -34,6 +34,7 @@ After external storage is unplugged or disconnected, migrated apps cannot launch
 1. Reconnect external storage
 2. AppPorts' `FolderMonitor` automatically detects storage volume mounting and triggers re-scan
 3. Apps and data directories resume normal use
+4. If an external app was updated via the App Store while AppPorts was not running, the re-scan will automatically sync the version info to the local Stub Portal
 
 ::: warning ⚠️ Note
 While external storage is offline, local entries (Stub Portal) calling `open` will fail; apps cannot launch but will not crash. Data directory symbolic links point to invalid paths; associated apps may not be able to read data.

@@ -4,6 +4,27 @@ outline: deep
 
 # Changelog
 
+## v1.7.1
+
+### New Features
+
+- Added custom local scan directories: the "Mac Local Apps" header now has a "+" button to add extra local app scan directories. Useful for tools like JetBrains Toolbox and Steam that install apps outside `/Applications`. Added directories are persisted and automatically monitored for changes (#48).
+- Added Stub Portal version sync: when an external app is updated via the App Store, the local Stub Portal's version info is now automatically synced and the macOS Launch Services cache is refreshed. The "Open With" menu no longer shows stale version numbers (#50).
+
+### Improvements
+
+- Faster app scanning: Info.plist reads per app reduced from 7 to 1 (via in-memory cache), significantly improving scan speed.
+- Scan timeout protection: the `codesign` subprocess now has a 10-second timeout, preventing large app signature checks from blocking the entire scan indefinitely.
+- Directory size calculation safety cap: a 500,000 file count limit has been added to recursive size calculations, preventing runaway enumeration on Electron and other large app bundles.
+- Scan trace logging: per-app TRACE logging added to the scan loop, making it easier to identify which app is slow or stuck during scanning.
+- More precise data directory matching: fixed bundle ID suffix extraction to filter generic TLD words like `app`, `com`, `org`. Previously, bundle IDs like `cn.trae.app` would trigger scanning of 720+ unrelated system containers.
+
+### Fixes
+
+- Fixed Trae and similar apps scanning extremely slowly — the generic suffix `app` from the bundle ID caused `~/Library/Containers/` to scan hundreds of unrelated directories.
+- Fixed local Stub Portal version info not updating after external apps are updated via the App Store, causing the "Open With" menu to show stale versions.
+- Fixed the refresh button not triggering Stub Portal version sync.
+
 ## v1.7.0
 
 ### New Features

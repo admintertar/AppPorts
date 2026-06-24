@@ -899,14 +899,29 @@ struct DataDirsView: View {
 
             // 并行计算所有目录大小（TaskGroup，非 actor 隔离的 fastDirectorySize）
             let sizedItems = await withTaskGroup(of: (Int, Int64).self) { group in
-                for i in items.indices {
+                var results: [(Int, Int64)] = []
+                var iterator = items.indices.makeIterator()
+                var active = 0
+                let maxConcurrency = 4
+
+                // 启动初始批次
+                for _ in 0..<min(maxConcurrency, items.count) {
+                    guard let i = iterator.next() else { break }
                     let scanURL = items[i].linkedDestination ?? items[i].path
-                    group.addTask {
-                        (i, fastDirectorySize(at: scanURL))
+                    group.addTask { (i, fastDirectorySize(at: scanURL)) }
+                    active += 1
+                }
+
+                // 每完成一个再启动一个
+                for await result in group {
+                    results.append(result)
+                    active -= 1
+                    if let i = iterator.next() {
+                        let scanURL = items[i].linkedDestination ?? items[i].path
+                        group.addTask { (i, fastDirectorySize(at: scanURL)) }
+                        active += 1
                     }
                 }
-                var results: [(Int, Int64)] = []
-                for await result in group { results.append(result) }
                 return results
             }
 
@@ -963,14 +978,29 @@ struct DataDirsView: View {
 
             // 并行计算所有目录大小
             let sizedItems = await withTaskGroup(of: (Int, Int64).self) { group in
-                for i in items.indices {
+                var results: [(Int, Int64)] = []
+                var iterator = items.indices.makeIterator()
+                var active = 0
+                let maxConcurrency = 4
+
+                // 启动初始批次
+                for _ in 0..<min(maxConcurrency, items.count) {
+                    guard let i = iterator.next() else { break }
                     let scanURL = items[i].linkedDestination ?? items[i].path
-                    group.addTask {
-                        (i, fastDirectorySize(at: scanURL))
+                    group.addTask { (i, fastDirectorySize(at: scanURL)) }
+                    active += 1
+                }
+
+                // 每完成一个再启动一个
+                for await result in group {
+                    results.append(result)
+                    active -= 1
+                    if let i = iterator.next() {
+                        let scanURL = items[i].linkedDestination ?? items[i].path
+                        group.addTask { (i, fastDirectorySize(at: scanURL)) }
+                        active += 1
                     }
                 }
-                var results: [(Int, Int64)] = []
-                for await result in group { results.append(result) }
                 return results
             }
 

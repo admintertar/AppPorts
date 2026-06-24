@@ -200,6 +200,8 @@ struct ContentView: View {
     
     private let localAppsURL = URL(fileURLWithPath: "/Applications")
     @State private var externalDriveURL: URL?
+    @State private var customLocalScanPaths: [String] = UserDefaults.standard.stringArray(forKey: "customLocalScanPaths") ?? []
+    @State private var customLocalMonitors: [FolderMonitor] = []
 
     // 多选支持
     @State private var selectedLocalApps: Set<String> = []
@@ -401,10 +403,43 @@ struct ContentView: View {
                 // --- 左侧：本地应用 ---
                 VStack(spacing: 0) {
                     // Header Area (Restored to original simple style)
-                    HeaderView(title: "Mac 本地应用".localized, subtitle: "/Applications", icon: "macmini") {
-                        scanLocalApps()
+                    HeaderView(
+                        title: "Mac 本地应用".localized,
+                        subtitle: localAppsSubtitle,
+                        icon: "macmini",
+                        actionButtonText: "＋",
+                        onAction: addCustomLocalScanPath,
+                        onRefresh: { scanLocalApps() }
+                    )
+
+                    // 自定义扫描目录标签
+                    if !customLocalScanPaths.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 6) {
+                                ForEach(customLocalScanPaths, id: \.self) { path in
+                                    HStack(spacing: 4) {
+                                        Text((path as NSString).lastPathComponent)
+                                            .font(.caption)
+                                            .lineLimit(1)
+                                        Button(action: { removeCustomLocalScanPath(path) }) {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .font(.caption2)
+                                                .foregroundColor(.secondary)
+                                        }
+                                        .buttonStyle(.plain)
+                                    }
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 4)
+                                    .background(Color.accentColor.opacity(0.1))
+                                    .cornerRadius(6)
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 6)
+                        }
+                        .background(.ultraThinMaterial)
                     }
-                    
+
                     ZStack {
                         Color(nsColor: .controlBackgroundColor).ignoresSafeArea()
                         
@@ -1095,31 +1130,59 @@ struct ContentView: View {
         Task.detached(priority: .userInitiated) {
             // Gather data needed for scanning
             let runningAppURLs = await MainActor.run { self.getRunningAppURLs() }
-            let scanDir = self.localAppsURL
             let externalAppsDir = await MainActor.run { self.externalDriveURL }
-            
+            let customPaths = await MainActor.run { self.customLocalScanPaths }
+
             // Use Actor
             let scanner = AppScanner()
-            let newApps = await scanner.scanLocalApps(
-                at: scanDir,
+            var allApps = await scanner.scanLocalApps(
+                at: self.localAppsURL,
                 runningAppURLs: runningAppURLs,
                 externalAppsDir: externalAppsDir
             )
-            
+
+            // 扫描自定义目录
+            for path in customPaths {
+                let customApps = await scanner.scanLocalApps(
+                    at: URL(fileURLWithPath: path),
+                    runningAppURLs: runningAppURLs,
+                    externalAppsDir: externalAppsDir
+                )
+                let existingPaths = Set(allApps.map { $0.path.path })
+                for app in customApps where !existingPaths.contains(app.path.path) {
+                    allApps.append(app)
+                }
+            }
+
+            let finalApps = allApps
+
+            // 检测外置 app 版本变化，刷新本地 Stub Portal
+            if let externalDir = externalAppsDir {
+                let externalApps = await scanner.scanExternalApps(at: externalDir, localAppsDir: URL(fileURLWithPath: "/Applications"))
+                let service = AppMigrationService()
+                for localApp in finalApps where localApp.status == AppStatus.linked {
+                    if let externalApp = externalApps.first(where: { $0.name == localApp.name }),
+                       localApp.version != externalApp.version {
+                        service.refreshStubPortal(at: localApp.path, from: externalApp.path)
+                    }
+                }
+            }
+
             await MainActor.run {
-                self.localApps = newApps
+                self.localApps = finalApps
             }
             AppLogger.shared.logContext(
                 "本地应用扫描完成",
                 details: [
                     ("scan_id", scanID),
-                    ("count", String(newApps.count)),
-                    ("status_summary", self.summarizeStatuses(for: newApps))
+                    ("count", String(finalApps.count)),
+                    ("custom_dirs", String(customPaths.count)),
+                    ("status_summary", self.summarizeStatuses(for: finalApps))
                 ]
             )
             
             if calculateSizes {
-                await self.calculateSizesProgressive(for: newApps, isLocal: true, scanner: scanner)
+                await self.calculateSizesProgressive(for: finalApps, isLocal: true, scanner: scanner)
             }
         }
     }
@@ -1173,14 +1236,33 @@ struct ContentView: View {
     func calculateSizesProgressive(for apps: [AppItem], isLocal: Bool, scanner: AppScanner) async {
         // 并行计算所有大小，再一次性批量更新 UI，避免列表反复重排
         let results = await withTaskGroup(of: (String, Int64).self) { group in
-            for app in apps {
+            var dict: [String: Int64] = [:]
+            var iterator = apps.makeIterator()
+            var active = 0
+            let maxConcurrency = 4
+
+            // 启动初始批次
+            for _ in 0..<min(maxConcurrency, apps.count) {
+                guard let app = iterator.next() else { break }
                 group.addTask {
                     let size = await scanner.calculateDisplayedSize(for: app, isLocalEntry: isLocal)
                     return (app.id, size)
                 }
+                active += 1
             }
-            var dict: [String: Int64] = [:]
-            for await (id, size) in group { dict[id] = size }
+
+            // 每完成一个再启动一个
+            for await (id, size) in group {
+                dict[id] = size
+                active -= 1
+                if let app = iterator.next() {
+                    group.addTask {
+                        let size = await scanner.calculateDisplayedSize(for: app, isLocalEntry: isLocal)
+                        return (app.id, size)
+                    }
+                    active += 1
+                }
+            }
             return dict
         }
 
@@ -1255,7 +1337,40 @@ struct ContentView: View {
             AppLogger.shared.log("用户取消选择外部路径", level: "TRACE")
         }
     }
-    
+
+    // MARK: - 自定义本地扫描目录
+
+    private var localAppsSubtitle: String {
+        let base = "/Applications"
+        if customLocalScanPaths.isEmpty {
+            return base
+        }
+        return "\(base) + \(customLocalScanPaths.count) \("个目录".localized)"
+    }
+
+    func addCustomLocalScanPath() {
+        let panel = NSOpenPanel()
+        panel.prompt = "选择文件夹".localized
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.message = "选择要额外扫描的应用目录".localized
+        guard panel.runModal() == .OK, let url = panel.url else { return }
+        let path = url.path
+        guard !customLocalScanPaths.contains(path) else { return }
+        customLocalScanPaths.append(path)
+        UserDefaults.standard.set(customLocalScanPaths, forKey: "customLocalScanPaths")
+        startMonitoringLocal()
+        scanLocalApps()
+    }
+
+    func removeCustomLocalScanPath(_ path: String) {
+        customLocalScanPaths.removeAll { $0 == path }
+        UserDefaults.standard.set(customLocalScanPaths, forKey: "customLocalScanPaths")
+        startMonitoringLocal()
+        scanLocalApps()
+    }
+
     func showError(title: String, message: String) {
         AppLogger.shared.logContext(
             "向用户展示错误",
@@ -2100,6 +2215,9 @@ struct ContentView: View {
     
     func startMonitoringLocal() {
         localMonitor?.stopMonitoring()
+        customLocalMonitors.forEach { $0.stopMonitoring() }
+        customLocalMonitors.removeAll()
+
         AppLogger.shared.logContext("启动本地目录监控", details: [("path", localAppsURL.path)])
 
         let monitor = FolderMonitor(url: localAppsURL)
@@ -2107,6 +2225,16 @@ struct ContentView: View {
             scheduleMonitorRescan(local: true)
         }
         self.localMonitor = monitor
+
+        // 监控自定义目录
+        for path in customLocalScanPaths {
+            let url = URL(fileURLWithPath: path)
+            let customMonitor = FolderMonitor(url: url)
+            customMonitor.startMonitoring { [self] in
+                scheduleMonitorRescan(local: true)
+            }
+            customLocalMonitors.append(customMonitor)
+        }
     }
 
     func startMonitoringExternal(url: URL) {
@@ -2136,6 +2264,7 @@ struct ContentView: View {
             let runningAppURLs = await MainActor.run { self.getRunningAppURLs() }
             let localDir = self.localAppsURL
             let externalLocalDir = URL(fileURLWithPath: "/Applications")
+            let customPaths = await MainActor.run { self.customLocalScanPaths }
 
             // 保留旧的大小信息
             let oldLocalSizes = await MainActor.run {
@@ -2152,18 +2281,31 @@ struct ContentView: View {
             }
 
             // 并行扫描
-            async let localResult = scanner.scanLocalApps(
+            var newLocalApps = await scanner.scanLocalApps(
                 at: localDir,
                 runningAppURLs: runningAppURLs,
                 externalAppsDir: externalDir
             )
+
+            // 扫描自定义目录
+            for path in customPaths {
+                let customApps = await scanner.scanLocalApps(
+                    at: URL(fileURLWithPath: path),
+                    runningAppURLs: runningAppURLs,
+                    externalAppsDir: externalDir
+                )
+                let existingPaths = Set(newLocalApps.map { $0.path.path })
+                for app in customApps where !existingPaths.contains(app.path.path) {
+                    newLocalApps.append(app)
+                }
+            }
+
             let externalResult: [AppItem]
             if let externalDir {
                 externalResult = await scanner.scanExternalApps(at: externalDir, localAppsDir: externalLocalDir)
             } else {
                 externalResult = []
             }
-            var newLocalApps = await localResult
 
             // 恢复旧的大小信息，只对变化的 app 标记需要重算
             for i in newLocalApps.indices {
@@ -2177,6 +2319,15 @@ struct ContentView: View {
                 if let (size, sizeBytes) = oldExternalSizes[newExternalApps[i].id] {
                     newExternalApps[i].size = size
                     newExternalApps[i].sizeBytes = sizeBytes
+                }
+            }
+
+            // 检测外置 app 版本变化，刷新本地 Stub Portal
+            let service = AppMigrationService()
+            for localApp in newLocalApps where localApp.status == AppStatus.linked {
+                if let externalApp = newExternalApps.first(where: { $0.name == localApp.name }),
+                   localApp.version != externalApp.version {
+                    service.refreshStubPortal(at: localApp.path, from: externalApp.path)
                 }
             }
 

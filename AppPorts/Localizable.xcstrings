@@ -15877,6 +15877,554 @@
         }
       }
     },
+    "data_dir_resign_alert_accept" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الموافقة على إعادة التوقيع"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-sign after migration"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu signieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-sign after migration"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konsenti resubskribi"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar re-firmar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accepter de resigner"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "री-साइन करने की अनुमति दें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setuju tanda tangan ulang"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accetta di firmare di nuovo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再署名に同意"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "재서명 동의"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akkoord met opnieuw ondertekenen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgódź się na ponowne podpisanie"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reassinar após a migração"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Согласиться на повторную подпись"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ยินยอมให้ลงนามใหม่"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeniden imzalamayı kabul et"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đồng ý ký lại"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同意重签名"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同意重簽名"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "哃意重簽名"
+          }
+        }
+      }
+    },
+    "data_dir_resign_alert_decline" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا أوافق، الترحيل فقط"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrate only"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht zustimmen, nur migrieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrate only"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ne konsenti, nur migri"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No aceptar, solo migrar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refuser, migrer seulement"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "सहमत नहीं, केवल माइग्रेट करें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak setuju, hanya migrasi"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non accetto, solo migra"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "同意せず、移行のみ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "동의하지 않음, 마이그레이션만"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niet akkoord, alleen migreren"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie zgadzam się, tylko migruj"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrar sem reassinar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не согласиться, только перенести"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ไม่ยินยอม ย้ายเท่านั้น"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kabul etme, yalnızca taşı"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Không đồng ý, chỉ di chuyển"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不同意，仅迁移"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不同意，僅遷移"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鈈同意，僅遷迻"
+          }
+        }
+      }
+    },
+    "data_dir_resign_alert_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أنت تنقل بيانات الحاوية الخاصة بـ \"%@\". بعد النقل، قد يعتبر macOS أن بيانات التطبيق أو حالة التوقيع قد تغيّرت، مما قد يؤدي إلى ظهور رسائل مثل \"تالف\" أو \"لا يمكن فتحه\" أو إلى تشغيل غير طبيعي.\n\nيوصي AppPorts بإجراء إعادة توقيع Ad-hoc على \"%@\" بعد النقل. هل تريد إعادة توقيعه تلقائيًا بعد هذا النقل؟"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are migrating container data for \"%@\". After migration, macOS may treat the app data or signing state as changed, which can cause the app to show \"damaged\", \"can't be opened\", or launch abnormally.\n\nAppPorts recommends performing Ad-hoc re-signing on \"%@\" after migration. Do you want to automatically re-sign it after this migration?"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Du migrierst Containerdaten für „%@“. Nach der Migration kann macOS App-Daten oder den Signaturstatus als geändert ansehen. Dadurch kann die App als „beschädigt“ gemeldet werden, sich nicht öffnen lassen oder ungewöhnlich starten.\n\nAppPorts empfiehlt, „%@“ nach der Migration Ad-hoc neu zu signieren. Soll die App nach dieser Migration automatisch neu signiert werden?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are migrating container data for \"%@\". After migration, macOS may treat the app data or signing state as changed, which can cause the app to show \"damaged\", \"can't be opened\", or launch abnormally.\n\nAppPorts recommends performing Ad-hoc re-signing on \"%@\" after migration. Do you want to automatically re-sign it after this migration?"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vi migras kontenerajn datumojn por \"%@\". Post migrado, macOS povas konsideri la aplikaĵajn datumojn aŭ subskriban staton ŝanĝitaj, kio povas montri la programon kiel \"difektita\", \"ne malfermebla\", aŭ kaŭzi nenormalan lanĉon.\n\nAppPorts rekomendas fari Ad-hoc-resubskribon por \"%@\" post migrado. Ĉu vi volas aŭtomate resubskribi ĝin post ĉi tiu migrado?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estás migrando los datos del contenedor de \"%@\". Después de la migración, macOS puede considerar que los datos de la app o el estado de firma cambiaron, lo que puede hacer que la app aparezca como \"dañada\", que \"no se puede abrir\" o que se inicie de forma anómala.\n\nAppPorts recomienda realizar una re-firma Ad-hoc en \"%@\" después de la migración. ¿Quieres re-firmarla automáticamente después de esta migración?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous migrez les données de conteneur de « %@ ». Après la migration, macOS peut considérer que les données de l’app ou l’état de signature ont changé, ce qui peut faire apparaître l’app comme « endommagée », impossible à ouvrir, ou provoquer un démarrage anormal.\n\nAppPorts recommande d’effectuer une resignature Ad-hoc de « %@ » après la migration. Voulez-vous la resigner automatiquement après cette migration ?"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आप \"%@\" का कंटेनर डेटा माइग्रेट कर रहे हैं। माइग्रेशन के बाद macOS ऐप डेटा या साइनिंग स्थिति को बदला हुआ मान सकता है, जिससे ऐप \"damaged\", \"can't be opened\" दिखा सकता है या असामान्य रूप से शुरू हो सकता है।\n\nAppPorts माइग्रेशन के बाद \"%@\" पर Ad-hoc री-साइनिंग करने की सलाह देता है। क्या आप इस माइग्रेशन के बाद इसे अपने आप री-साइन करना चाहते हैं?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anda sedang memigrasikan data kontainer untuk \"%@\". Setelah migrasi, macOS dapat menganggap data app atau status tanda tangan telah berubah, sehingga app mungkin tampil sebagai \"rusak\", \"tidak dapat dibuka\", atau berjalan tidak normal saat dibuka.\n\nAppPorts menyarankan penandatanganan ulang Ad-hoc pada \"%@\" setelah migrasi. Apakah Anda ingin menandatanganinya ulang secara otomatis setelah migrasi ini?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stai migrando i dati del contenitore di \"%@\". Dopo la migrazione, macOS potrebbe considerare modificati i dati dell’app o lo stato della firma, causando messaggi come \"danneggiata\", \"impossibile da aprire\" o un avvio anomalo.\n\nAppPorts consiglia di eseguire una nuova firma Ad-hoc di \"%@\" dopo la migrazione. Vuoi firmarla di nuovo automaticamente al termine di questa migrazione?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "「%@」のコンテナ内データを移行しようとしています。移行後、macOS がアプリデータまたは署名状態が変更されたと判断し、アプリが「壊れている」「開けない」と表示されたり、起動が不安定になったりする場合があります。\n\nAppPorts は、移行完了後に「%@」へ Ad-hoc 再署名を行うことを推奨します。この移行後に自動で再署名しますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\"의 컨테이너 데이터를 마이그레이션하고 있습니다. 마이그레이션 후 macOS가 앱 데이터나 서명 상태가 변경되었다고 판단할 수 있으며, 이 경우 앱이 \"손상됨\", \"열 수 없음\"으로 표시되거나 비정상적으로 실행될 수 있습니다.\n\nAppPorts는 마이그레이션 후 \"%@\"에 Ad-hoc 재서명을 수행하는 것을 권장합니다. 이번 마이그레이션 후 자동으로 재서명할까요?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Je migreert containergegevens voor \"%@\". Na de migratie kan macOS de appgegevens of ondertekeningsstatus als gewijzigd zien, waardoor de app als \"beschadigd\" kan worden gemeld, niet kan worden geopend of afwijkend start.\n\nAppPorts raadt aan om \"%@\" na de migratie Ad-hoc opnieuw te ondertekenen. Wil je de app na deze migratie automatisch opnieuw ondertekenen?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Migrujesz dane kontenera dla „%@”. Po migracji macOS może uznać dane aplikacji lub stan podpisu za zmienione, przez co aplikacja może zostać zgłoszona jako „uszkodzona”, „nie można jej otworzyć” albo uruchamiać się nieprawidłowo.\n\nAppPorts zaleca wykonanie ponownego podpisania Ad-hoc dla „%@” po migracji. Czy automatycznie podpisać ją ponownie po tej migracji?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você está migrando dados de contêiner de \"%@\". Após a migração, o macOS pode considerar que os dados do app ou o estado da assinatura mudaram, fazendo o app aparecer como \"danificado\", \"não pode ser aberto\" ou iniciar de forma anormal.\n\nO AppPorts recomenda fazer uma reassinatura Ad-hoc em \"%@\" após a migração. Deseja reassiná-lo automaticamente depois desta migração?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы переносите данные контейнера для «%@». После переноса macOS может посчитать, что данные приложения или состояние подписи изменились, из-за чего приложение может отображаться как «повреждено», «не удаётся открыть» или запускаться некорректно.\n\nAppPorts рекомендует выполнить Ad-hoc повторную подпись для «%@» после переноса. Выполнить повторную подпись автоматически после этой миграции?"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คุณกำลังย้ายข้อมูลคอนเทนเนอร์ของ \"%@\" หลังการย้าย macOS อาจมองว่าข้อมูลแอปหรือสถานะลายเซ็นเปลี่ยนไป ทำให้แอปแสดงว่า \"เสียหาย\", \"ไม่สามารถเปิดได้\" หรือเปิดทำงานผิดปกติ\n\nAppPorts แนะนำให้ลงนาม Ad-hoc ใหม่ให้ \"%@\" หลังการย้าย ต้องการให้ลงนามใหม่โดยอัตโนมัติหลังการย้ายครั้งนี้หรือไม่?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" için kapsayıcı verilerini taşıyorsunuz. Taşıma sonrasında macOS uygulama verilerinin veya imza durumunun değiştiğini düşünebilir; bu da uygulamanın \"hasarlı\", \"açılamıyor\" görünmesine ya da anormal başlamasına yol açabilir.\n\nAppPorts, taşıma sonrasında \"%@\" için Ad-hoc yeniden imzalama yapılmasını önerir. Bu taşıma sonrasında otomatik olarak yeniden imzalansın mı?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bạn đang di chuyển dữ liệu vùng chứa của \"%@\". Sau khi di chuyển, macOS có thể xem dữ liệu ứng dụng hoặc trạng thái chữ ký là đã thay đổi, khiến ứng dụng báo \"bị hỏng\", \"không thể mở\" hoặc khởi chạy bất thường.\n\nAppPorts khuyến nghị ký lại Ad-hoc cho \"%@\" sau khi di chuyển. Bạn có muốn tự động ký lại sau lần di chuyển này không?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你正在迁移「%@」的容器内数据。迁移后 macOS 可能认为应用数据或签名状态发生变化，导致应用提示「已损坏」「无法打开」或启动异常。\n\n建议在迁移完成后对「%@」执行 Ad-hoc 重签名。是否在本次迁移后自动重签名？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你正在遷移「%@」的容器內資料。遷移後 macOS 可能會認為應用資料或簽名狀態已變更，導致應用顯示「已損毀」「無法打開」或啟動異常。\n\n建議在遷移完成後對「%@」執行 Ad-hoc 重新簽名。是否要在本次遷移後自動重新簽名？"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "伱正茬遷迻「%@」の容器內數據。遷迻後 macOS 岢螚認為應用數據或簽名狀態發生變化，導致應用提示「已損壞」「無法打開」或啟動異常。\n\n建議茬遷迻完成後對「%@」執行 Ad-hoc 重簽名。湜否茬本次遷迻後自動重簽名？"
+          }
+        }
+      }
+    },
+    "data_dir_resign_alert_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل تريد إعادة توقيع هذا التطبيق؟"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-sign this app?"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App neu signieren?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-sign this app?"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ĉu resubskribi ĉi tiun aplikaĵon?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Volver a firmar esta app?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resigner cette app ?"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "क्या इस ऐप को फिर से साइन करें?"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanda tangani ulang app ini?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firmare di nuovo questa app?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "このアプリに再署名しますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱을 다시 서명할까요?"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deze app opnieuw ondertekenen?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponownie podpisać tę aplikację?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reassinar este app?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повторно подписать это приложение?"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ลงนามแอปนี้ใหม่หรือไม่?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu uygulama yeniden imzalansın mı?"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ký lại ứng dụng này?"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否重签名应用？"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "是否重簽名應用？"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "湜否重簽名應用？"
+          }
+        }
+      }
+    },
     "Data/Library 受沙盒保护，迁移会致应用崩溃。请迁移其子目录。" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17106,554 +17654,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DataDirScanner 识别到现有软链"
-          }
-        }
-      }
-    },
-    "data_dir_resign_alert_accept" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "الموافقة على إعادة التوقيع"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Re-sign after migration"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Neu signieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Re-sign after migration"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konsenti resubskribi"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aceptar re-firmar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accepter de resigner"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "री-साइन करने की अनुमति दें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Setuju tanda tangan ulang"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Accetta di firmare di nuovo"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "再署名に同意"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "재서명 동의"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Akkoord met opnieuw ondertekenen"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zgódź się na ponowne podpisanie"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reassinar após a migração"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Согласиться на повторную подпись"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ยินยอมให้ลงนามใหม่"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yeniden imzalamayı kabul et"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Đồng ý ký lại"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同意重签名"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同意重簽名"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "哃意重簽名"
-          }
-        }
-      }
-    },
-    "data_dir_resign_alert_decline" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "لا أوافق، الترحيل فقط"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migrate only"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicht zustimmen, nur migrieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migrate only"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ne konsenti, nur migri"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No aceptar, solo migrar"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Refuser, migrer seulement"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "सहमत नहीं, केवल माइग्रेट करें"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tidak setuju, hanya migrasi"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Non accetto, solo migra"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "同意せず、移行のみ"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "동의하지 않음, 마이그레이션만"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Niet akkoord, alleen migreren"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nie zgadzam się, tylko migruj"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migrar sem reassinar"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Не согласиться, только перенести"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ไม่ยินยอม ย้ายเท่านั้น"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kabul etme, yalnızca taşı"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Không đồng ý, chỉ di chuyển"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不同意，仅迁移"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "不同意，僅遷移"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "鈈同意，僅遷迻"
-          }
-        }
-      }
-    },
-    "data_dir_resign_alert_message" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "أنت تنقل بيانات الحاوية الخاصة بـ \"%@\". بعد النقل، قد يعتبر macOS أن بيانات التطبيق أو حالة التوقيع قد تغيّرت، مما قد يؤدي إلى ظهور رسائل مثل \"تالف\" أو \"لا يمكن فتحه\" أو إلى تشغيل غير طبيعي.\n\nيوصي AppPorts بإجراء إعادة توقيع Ad-hoc على \"%@\" بعد النقل. هل تريد إعادة توقيعه تلقائيًا بعد هذا النقل؟"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You are migrating container data for \"%@\". After migration, macOS may treat the app data or signing state as changed, which can cause the app to show \"damaged\", \"can't be opened\", or launch abnormally.\n\nAppPorts recommends performing Ad-hoc re-signing on \"%@\" after migration. Do you want to automatically re-sign it after this migration?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Du migrierst Containerdaten für „%@“. Nach der Migration kann macOS App-Daten oder den Signaturstatus als geändert ansehen. Dadurch kann die App als „beschädigt“ gemeldet werden, sich nicht öffnen lassen oder ungewöhnlich starten.\n\nAppPorts empfiehlt, „%@“ nach der Migration Ad-hoc neu zu signieren. Soll die App nach dieser Migration automatisch neu signiert werden?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You are migrating container data for \"%@\". After migration, macOS may treat the app data or signing state as changed, which can cause the app to show \"damaged\", \"can't be opened\", or launch abnormally.\n\nAppPorts recommends performing Ad-hoc re-signing on \"%@\" after migration. Do you want to automatically re-sign it after this migration?"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vi migras kontenerajn datumojn por \"%@\". Post migrado, macOS povas konsideri la aplikaĵajn datumojn aŭ subskriban staton ŝanĝitaj, kio povas montri la programon kiel \"difektita\", \"ne malfermebla\", aŭ kaŭzi nenormalan lanĉon.\n\nAppPorts rekomendas fari Ad-hoc-resubskribon por \"%@\" post migrado. Ĉu vi volas aŭtomate resubskribi ĝin post ĉi tiu migrado?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estás migrando los datos del contenedor de \"%@\". Después de la migración, macOS puede considerar que los datos de la app o el estado de firma cambiaron, lo que puede hacer que la app aparezca como \"dañada\", que \"no se puede abrir\" o que se inicie de forma anómala.\n\nAppPorts recomienda realizar una re-firma Ad-hoc en \"%@\" después de la migración. ¿Quieres re-firmarla automáticamente después de esta migración?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vous migrez les données de conteneur de « %@ ». Après la migration, macOS peut considérer que les données de l’app ou l’état de signature ont changé, ce qui peut faire apparaître l’app comme « endommagée », impossible à ouvrir, ou provoquer un démarrage anormal.\n\nAppPorts recommande d’effectuer une resignature Ad-hoc de « %@ » après la migration. Voulez-vous la resigner automatiquement après cette migration ?"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "आप \"%@\" का कंटेनर डेटा माइग्रेट कर रहे हैं। माइग्रेशन के बाद macOS ऐप डेटा या साइनिंग स्थिति को बदला हुआ मान सकता है, जिससे ऐप \"damaged\", \"can't be opened\" दिखा सकता है या असामान्य रूप से शुरू हो सकता है।\n\nAppPorts माइग्रेशन के बाद \"%@\" पर Ad-hoc री-साइनिंग करने की सलाह देता है। क्या आप इस माइग्रेशन के बाद इसे अपने आप री-साइन करना चाहते हैं?"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Anda sedang memigrasikan data kontainer untuk \"%@\". Setelah migrasi, macOS dapat menganggap data app atau status tanda tangan telah berubah, sehingga app mungkin tampil sebagai \"rusak\", \"tidak dapat dibuka\", atau berjalan tidak normal saat dibuka.\n\nAppPorts menyarankan penandatanganan ulang Ad-hoc pada \"%@\" setelah migrasi. Apakah Anda ingin menandatanganinya ulang secara otomatis setelah migrasi ini?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stai migrando i dati del contenitore di \"%@\". Dopo la migrazione, macOS potrebbe considerare modificati i dati dell’app o lo stato della firma, causando messaggi come \"danneggiata\", \"impossibile da aprire\" o un avvio anomalo.\n\nAppPorts consiglia di eseguire una nuova firma Ad-hoc di \"%@\" dopo la migrazione. Vuoi firmarla di nuovo automaticamente al termine di questa migrazione?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "「%@」のコンテナ内データを移行しようとしています。移行後、macOS がアプリデータまたは署名状態が変更されたと判断し、アプリが「壊れている」「開けない」と表示されたり、起動が不安定になったりする場合があります。\n\nAppPorts は、移行完了後に「%@」へ Ad-hoc 再署名を行うことを推奨します。この移行後に自動で再署名しますか？"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "\"%@\"의 컨테이너 데이터를 마이그레이션하고 있습니다. 마이그레이션 후 macOS가 앱 데이터나 서명 상태가 변경되었다고 판단할 수 있으며, 이 경우 앱이 \"손상됨\", \"열 수 없음\"으로 표시되거나 비정상적으로 실행될 수 있습니다.\n\nAppPorts는 마이그레이션 후 \"%@\"에 Ad-hoc 재서명을 수행하는 것을 권장합니다. 이번 마이그레이션 후 자동으로 재서명할까요?"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Je migreert containergegevens voor \"%@\". Na de migratie kan macOS de appgegevens of ondertekeningsstatus als gewijzigd zien, waardoor de app als \"beschadigd\" kan worden gemeld, niet kan worden geopend of afwijkend start.\n\nAppPorts raadt aan om \"%@\" na de migratie Ad-hoc opnieuw te ondertekenen. Wil je de app na deze migratie automatisch opnieuw ondertekenen?"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migrujesz dane kontenera dla „%@”. Po migracji macOS może uznać dane aplikacji lub stan podpisu za zmienione, przez co aplikacja może zostać zgłoszona jako „uszkodzona”, „nie można jej otworzyć” albo uruchamiać się nieprawidłowo.\n\nAppPorts zaleca wykonanie ponownego podpisania Ad-hoc dla „%@” po migracji. Czy automatycznie podpisać ją ponownie po tej migracji?"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Você está migrando dados de contêiner de \"%@\". Após a migração, o macOS pode considerar que os dados do app ou o estado da assinatura mudaram, fazendo o app aparecer como \"danificado\", \"não pode ser aberto\" ou iniciar de forma anormal.\n\nO AppPorts recomenda fazer uma reassinatura Ad-hoc em \"%@\" após a migração. Deseja reassiná-lo automaticamente depois desta migração?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вы переносите данные контейнера для «%@». После переноса macOS может посчитать, что данные приложения или состояние подписи изменились, из-за чего приложение может отображаться как «повреждено», «не удаётся открыть» или запускаться некорректно.\n\nAppPorts рекомендует выполнить Ad-hoc повторную подпись для «%@» после переноса. Выполнить повторную подпись автоматически после этой миграции?"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "คุณกำลังย้ายข้อมูลคอนเทนเนอร์ของ \"%@\" หลังการย้าย macOS อาจมองว่าข้อมูลแอปหรือสถานะลายเซ็นเปลี่ยนไป ทำให้แอปแสดงว่า \"เสียหาย\", \"ไม่สามารถเปิดได้\" หรือเปิดทำงานผิดปกติ\n\nAppPorts แนะนำให้ลงนาม Ad-hoc ใหม่ให้ \"%@\" หลังการย้าย ต้องการให้ลงนามใหม่โดยอัตโนมัติหลังการย้ายครั้งนี้หรือไม่?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "\"%@\" için kapsayıcı verilerini taşıyorsunuz. Taşıma sonrasında macOS uygulama verilerinin veya imza durumunun değiştiğini düşünebilir; bu da uygulamanın \"hasarlı\", \"açılamıyor\" görünmesine ya da anormal başlamasına yol açabilir.\n\nAppPorts, taşıma sonrasında \"%@\" için Ad-hoc yeniden imzalama yapılmasını önerir. Bu taşıma sonrasında otomatik olarak yeniden imzalansın mı?"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bạn đang di chuyển dữ liệu vùng chứa của \"%@\". Sau khi di chuyển, macOS có thể xem dữ liệu ứng dụng hoặc trạng thái chữ ký là đã thay đổi, khiến ứng dụng báo \"bị hỏng\", \"không thể mở\" hoặc khởi chạy bất thường.\n\nAppPorts khuyến nghị ký lại Ad-hoc cho \"%@\" sau khi di chuyển. Bạn có muốn tự động ký lại sau lần di chuyển này không?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你正在迁移「%@」的容器内数据。迁移后 macOS 可能认为应用数据或签名状态发生变化，导致应用提示「已损坏」「无法打开」或启动异常。\n\n建议在迁移完成后对「%@」执行 Ad-hoc 重签名。是否在本次迁移后自动重签名？"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你正在遷移「%@」的容器內資料。遷移後 macOS 可能會認為應用資料或簽名狀態已變更，導致應用顯示「已損毀」「無法打開」或啟動異常。\n\n建議在遷移完成後對「%@」執行 Ad-hoc 重新簽名。是否要在本次遷移後自動重新簽名？"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "伱正茬遷迻「%@」の容器內數據。遷迻後 macOS 岢螚認為應用數據或簽名狀態發生變化，導致應用提示「已損壞」「無法打開」或啟動異常。\n\n建議茬遷迻完成後對「%@」執行 Ad-hoc 重簽名。湜否茬本次遷迻後自動重簽名？"
-          }
-        }
-      }
-    },
-    "data_dir_resign_alert_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "هل تريد إعادة توقيع هذا التطبيق؟"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Re-sign this app?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diese App neu signieren?"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Re-sign this app?"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ĉu resubskribi ĉi tiun aplikaĵon?"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Volver a firmar esta app?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resigner cette app ?"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "क्या इस ऐप को फिर से साइन करें?"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tanda tangani ulang app ini?"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Firmare di nuovo questa app?"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "このアプリに再署名しますか？"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "이 앱을 다시 서명할까요?"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deze app opnieuw ondertekenen?"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ponownie podpisać tę aplikację?"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reassinar este app?"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Повторно подписать это приложение?"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ลงนามแอปนี้ใหม่หรือไม่?"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bu uygulama yeniden imzalansın mı?"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ký lại ứng dụng này?"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "是否重签名应用？"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "是否重簽名應用？"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "湜否重簽名應用？"
           }
         }
       }
@@ -19709,6 +19709,143 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FolderMonitor 启动失败：目录不存在"
+          }
+        }
+      }
+    },
+    "GitHub" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GitHub"
           }
         }
       }
@@ -26974,6 +27111,149 @@
         }
       }
     },
+    "个目录" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " مجلدات"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " renkelloù"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Verzeichnisse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " directories"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " dosierujoj"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " directorios"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " répertoires"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " निर्देशिकाएँ"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " direktori"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " cartelle"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " ディレクトリ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 디렉토리"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " mappen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " katalogów"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " diretórios"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " diretórios"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " каталогов"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " ไดเรกทอรี"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " dizin"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " thư mục"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 个目录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 個目錄"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " 个目录"
+          }
+        }
+      }
+    },
     "从左侧选择一个应用" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -27244,280 +27524,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "以下应用支持自动更新，迁移后应用内更新可能导致外部应用丢失：\n\n%@\n\n• 锁定迁移：外部应用被锁定，阻止更新破坏，需通过 AppPorts 迁回后更新\n• 非锁定迁移：不锁定外部应用，应用内更新可能删除外部应用\n\n建议选择锁定迁移以保护数据安全。"
-          }
-        }
-      }
-    },
-    "GitHub" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GitHub"
-          }
-        }
-      }
-    },
-    "国内下载" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "تنزيل الصين"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⠠⠉⠓⠊⠝⠁ ⠠⠙⠕⠺⠝⠇⠕⠁⠙"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "China-Download"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "China Download"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ĉina elŝuto"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Descarga China"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Téléchargement Chine"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "चीन डाउनलोड"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unduhan China"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download Cina"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "中国向けダウンロード"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "중국 다운로드"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "China-download"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pobieranie Chiny"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Download China"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Скачать из Китая"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ดาวน์โหลดจีน"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Çin İndirme"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tải xuống Trung Quốc"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "国内下载"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "國內下載"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "國內下載 ♪"
           }
         }
       }
@@ -35463,6 +35469,143 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "商店"
+          }
+        }
+      }
+    },
+    "国内下载" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنزيل الصين"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⠠⠉⠓⠊⠝⠁ ⠠⠙⠕⠺⠝⠇⠕⠁⠙"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China-Download"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China Download"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ĉina elŝuto"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descarga China"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Téléchargement Chine"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "चीन डाउनलोड"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unduhan China"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download Cina"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "中国向けダウンロード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "중국 다운로드"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "China-download"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pobieranie Chiny"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download China"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачать из Китая"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ดาวน์โหลดจีน"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çin İndirme"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tải xuống Trung Quốc"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "国内下载"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "國內下載"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "國內下載 ♪"
           }
         }
       }
@@ -47656,6 +47799,143 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "待規範"
+          }
+        }
+      }
+    },
+    "待迁出" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "في انتظار النقل للخارج"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⠠⠏⠑⠝⠙⠊⠝⠛ ⠠⠍⠕⠧⠑ ⠠⠕⠥⠞"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausstehende Auslagerung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending Move Out"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atendas elmovon"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pendiente de mover fuera"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortie en attente"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बाहर ले जाने की प्रतीक्षा"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menunggu dipindahkan keluar"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In attesa di spostamento esterno"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "移行待ち"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "내보내기 대기"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wacht op verplaatsen naar extern"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oczekuje na przeniesienie na zewnątrz"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pendente para mover para fora"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидает переноса наружу"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "รอย้ายออก"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dışa taşıma bekliyor"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chờ chuyển ra ngoài"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "待迁出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "待遷出"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "待遷炪"
           }
         }
       }
@@ -63274,143 +63554,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "未鏈啑"
-          }
-        }
-      }
-    },
-    "待迁出" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "في انتظار النقل للخارج"
-          }
-        },
-        "br" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "⠠⠏⠑⠝⠙⠊⠝⠛ ⠠⠍⠕⠧⠑ ⠠⠕⠥⠞"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ausstehende Auslagerung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pending Move Out"
-          }
-        },
-        "eo" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atendas elmovon"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pendiente de mover fuera"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sortie en attente"
-          }
-        },
-        "hi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "बाहर ले जाने की प्रतीक्षा"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menunggu dipindahkan keluar"
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In attesa di spostamento esterno"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "移行待ち"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "내보내기 대기"
-          }
-        },
-        "nl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wacht op verplaatsen naar extern"
-          }
-        },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oczekuje na przeniesienie na zewnątrz"
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pendente para mover para fora"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ожидает переноса наружу"
-          }
-        },
-        "th" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "รอย้ายออก"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dışa taşıma bekliyor"
-          }
-        },
-        "vi" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chờ chuyển ra ngoài"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "待迁出"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "待遷出"
-          }
-        },
-        "zh-martian" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "待遷炪"
           }
         }
       }
@@ -87797,6 +87940,149 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "選擇曰志葆邨位寘"
+          }
+        }
+      }
+    },
+    "选择要额外扫描的应用目录" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر مجلد تطبيقات إضافي للمسح"
+          }
+        },
+        "br" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dibabit ur renkell arloadoù ouzhpenn da veilh"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zusätzliches App-Verzeichnis zum Scannen auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an additional app directory to scan"
+          }
+        },
+        "eo" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elektu plian aplikaĵan dosierujon por skani"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar un directorio de aplicaciones adicional para escanear"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionner un répertoire d'applications supplémentaire à analyser"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "स्कैन करने के लिए एक अतिरिक्त ऐप निर्देशिका चुनें"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih direktori aplikasi tambahan untuk dipindai"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleziona una cartella aggiuntiva da analizzare"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "追加でスキャンするアプリディレクトリを選択"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "추가로 스캔할 앱 디렉토리 선택"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer een extra app-map om te scannen"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz dodatkowy katalog aplikacji do skanowania"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione um diretório de aplicativos adicional para verificar"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar um diretório de aplicativos adicional para verificar"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выберите дополнительный каталог приложений для сканирования"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "เลือกไดเรกทอรีแอปเพิ่มเติมเพื่อสแกน"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taramak için ek bir uygulama dizini seçin"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chọn thư mục ứng dụng bổ sung để quét"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要额外扫描的应用目录"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇要額外掃描的應用目錄"
+          }
+        },
+        "zh-martian" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择要额外扫描的应用目录"
           }
         }
       }
