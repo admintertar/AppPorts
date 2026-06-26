@@ -597,6 +597,78 @@ actor DataDirMover {
         operationResult = "success"
     }
 
+    // MARK: - 删除本地链接
+
+    /// 删除本地符号链接，保留外部真实目录。
+    ///
+    /// 适用场景：用户想断开本地入口，但继续保留外部存储中的目录，之后可再接回。
+    ///
+    /// - Parameter localPath: 本地原路径（必须是符号链接）
+    ///
+    /// - Throws: 文件系统错误、目标不是符号链接
+    func deleteLink(localPath: URL) throws {
+        let operationID = AppLogger.shared.makeOperationID(prefix: "data-unlink")
+        let startedAt = Date()
+        var operationResult = "failed"
+        var operationErrorCode: String?
+
+        defer {
+            AppLogger.shared.logOperationSummary(
+                category: "data_unlink",
+                operationID: operationID,
+                result: operationResult,
+                startedAt: startedAt,
+                errorCode: operationErrorCode,
+                details: [
+                    ("local_path", localPath.path)
+                ]
+            )
+        }
+
+        AppLogger.shared.logContext(
+            "开始删除数据目录本地链接",
+            details: [
+                ("operation_id", operationID),
+                ("local_path", localPath.path)
+            ]
+        )
+        AppLogger.shared.logPathState("删除数据目录链接前-本地路径[\(operationID)]", url: localPath)
+
+        do {
+            try checkWritePermission(at: localPath.deletingLastPathComponent())
+        } catch {
+            operationErrorCode = "DATA-UNLINK-PERMISSION-DENIED"
+            throw error
+        }
+
+        guard isSymbolicLink(at: localPath) else {
+            AppLogger.shared.logError(
+                "删除数据目录本地链接失败：本地路径不是符号链接",
+                errorCode: "DATA-UNLINK-NOT-A-SYMLINK",
+                context: [("operation_id", operationID)],
+                relatedURLs: [("local", localPath)]
+            )
+            operationErrorCode = "DATA-UNLINK-NOT-A-SYMLINK"
+            throw DataDirError.notASymlink(localPath)
+        }
+
+        do {
+            try fileManager.removeItem(at: localPath)
+            AppLogger.shared.logPathState("删除数据目录链接后-本地路径[\(operationID)]", url: localPath)
+            operationResult = "success"
+        } catch {
+            AppLogger.shared.logError(
+                "删除数据目录本地链接失败",
+                error: error,
+                errorCode: "DATA-UNLINK-REMOVE-FAILED",
+                context: [("operation_id", operationID)],
+                relatedURLs: [("local", localPath)]
+            )
+            operationErrorCode = "DATA-UNLINK-REMOVE-FAILED"
+            throw DataDirError.deletionFailed(error)
+        }
+    }
+
     /// 将现有软链接纳入 AppPorts 管理，并在需要时迁移到规范路径。
     ///
     /// 如果当前外部路径与规范路径不同，会先移动外部目录/文件，再重建本地软链接。

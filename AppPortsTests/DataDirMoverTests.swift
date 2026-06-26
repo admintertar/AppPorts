@@ -298,6 +298,27 @@ final class DataDirMoverTests: XCTestCase {
         XCTAssertTrue(fileManager.fileExists(atPath: markerURL(for: normalizedExternalURL).path))
     }
 
+    func testDeleteLinkRemovesLocalSymlinkAndKeepsExternalDirectory() async throws {
+        let workspace = try makeWorkspace()
+        defer { cleanupWorkspace(workspace.rootURL) }
+
+        let localDataURL = workspace.homeURL
+            .appendingPathComponent("Projects/develop")
+        let externalDataURL = workspace.externalRootURL
+            .appendingPathComponent("Projects/develop")
+
+        try createDirectoryWithPayload(at: externalDataURL, payload: "external-source")
+
+        let mover = DataDirMover(homeDir: workspace.homeURL)
+        try await mover.createLink(localPath: localDataURL, externalPath: externalDataURL)
+
+        try await mover.deleteLink(localPath: localDataURL)
+
+        XCTAssertFalse(fileManager.fileExists(atPath: localDataURL.path))
+        XCTAssertEqual(try String(contentsOf: externalDataURL.appendingPathComponent("payload.txt")), "external-source")
+        XCTAssertTrue(fileManager.fileExists(atPath: markerURL(for: externalDataURL).path))
+    }
+
     func testMigrateRejectsGroupContainerRootDirectory() async throws {
         let workspace = try makeWorkspace()
         defer { cleanupWorkspace(workspace.rootURL) }
